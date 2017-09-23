@@ -1,0 +1,15 @@
+<div class="wrapper" *ngIf = "setTemplate" >
+  
+    <app-admin-header ></app-admin-header>
+    <app-admin-left-side ></app-admin-left-side>
+  
+    <router-outlet></router-outlet>
+    <app-admin-footer></app-admin-footer>
+  
+    <app-admin-control-sidebar></app-admin-control-sidebar>
+    <div class="control-sidebar-bg"></div>
+  </div >
+  <div>
+      <router-outlet></router-outlet>
+  </div>
+  

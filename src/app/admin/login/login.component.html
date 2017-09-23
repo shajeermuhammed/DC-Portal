@@ -1,0 +1,34 @@
+<div class="login-box">
+  <div class="login-logo">
+    <span><b>Duty</b>Cab</span>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Cab on Duty Started your Duty</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+      <div class="form-group has-feedback">
+        <input class="form-control" placeholder="User Name" type="email" class="form-control" formControlName="username" maxlength="50">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <control-messages [control]="loginForm.controls.username" [messageKeys]="{'required': 'User name is mandatory'}"></control-messages>
+      </div>
+      <div class="form-group has-feedback">
+        <input class="form-control" placeholder="Password" type="password" class="form-control" formControlName="password" maxlength="50" (change)="validateUserName()">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <control-messages [control]="loginForm.controls.password" [messageKeys]="{'required': 'Password is mandatory'}"></control-messages>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button class="btn btn-primary btn-block btn-flat" type="submit" [disabled]="!loginForm.valid && loginForm.touched" [translate]>LOGIN</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <!-- /.social-auth-links -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
