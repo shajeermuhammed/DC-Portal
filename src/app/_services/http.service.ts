@@ -5,8 +5,9 @@ import { Constants } from './../app.config';
 import { Injectable, Inject, Injector } from '@angular/core';
 import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import { TranslateService } from '@ngx-translate/core';
 import 'rxjs/Rx';
+
+import { ToastyServiceService } from './../_services/toasty-service.service';
 
 const removeSlashes = (url: string): string => {
     if (!url)
@@ -37,7 +38,7 @@ export class HttpService extends Http {
         defaultOptions: RequestOptions,
         // private preloader: Preloader,
         private appConstants: Constants,
-        // private notify: NotifyService,
+        private toastyServiceService: ToastyServiceService,
         private injector: Injector) {
         super(backend, defaultOptions);
         this.apiType = appConstants.APITypeApplication;
@@ -264,7 +265,7 @@ export class HttpService extends Http {
             console.log('401')
         }
         else {
-            // this.notify.show(3, this.appConstants.commonAPIErrorMessage);
+            this.toastyServiceService.showToast('success', 'title','Message');
             console.log("common API error")
         }
     }

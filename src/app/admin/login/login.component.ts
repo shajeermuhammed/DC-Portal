@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 
 import { LoginService } from '../../_services/login.service';
+import { ToastyServiceService } from '../../_services/toasty-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,11 @@ import { LoginService } from '../../_services/login.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private renderer: Renderer,private formBuilder: FormBuilder,private loginService : LoginService) { }
+  constructor(
+    private renderer: Renderer,
+    private formBuilder: FormBuilder,
+    private loginService : LoginService,
+    private toastyServiceService: ToastyServiceService) { }
 
   ngOnInit() {
     this.buildForm();    
@@ -24,9 +29,10 @@ export class LoginComponent implements OnInit {
   }
   
   doLogin(){
-    this.loginService.doLogin().subscribe((result) => {
-      console.log('result = ', result)
-    })
+    // this.loginService.doLogin().subscribe((result) => {
+    //   console.log('result = ', result)
+    // })
+    this.toastyServiceService.showToast('success','test title','test message');
   }
 
 }

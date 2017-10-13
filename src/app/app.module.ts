@@ -15,11 +15,13 @@ import { PassengerMngtComponent } from './admin/passenger-mngt/passenger-mngt.co
 import { HomeComponent } from './admin/home/home.component';
 import { ControlMessageComponent } from './shared/control-message/control-message.component';
 import { HttpModule, JsonpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
+import {ToastyModule} from 'ng2-toasty';
 
 import { Constants } from './app.config';
 import { ValidationService } from './_services/validation.service';
 import { LoginService } from './_services/login.service';
 import { HttpService } from './_services/http.service';
+import { ToastyServiceService } from './_services/toasty-service.service';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,13 @@ import { HttpService } from './_services/http.service';
     Routing,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule    
+    HttpClientModule,
+    ToastyModule.forRoot()
   ],
   exports: [
     HttpModule
   ],
-  providers: [ValidationService, LoginService, HttpService, Constants],
+  providers: [ValidationService, LoginService, HttpService, Constants, ToastyServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
